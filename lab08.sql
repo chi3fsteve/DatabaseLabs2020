@@ -30,11 +30,16 @@ WHERE Branch = 20
 --6
 UPDATE Staff
 SET Salary_base =(SELECT Average=AVG(Salary_base) FROM Staff)
-WHERE ID IN (SELECT ID FROM Staff WHERE Salary_base = (SELECT MIN(Salary_base) FROM Staff))--7UPDATE Staff
+WHERE ID IN (SELECT ID FROM Staff WHERE Salary_base = (SELECT MIN(Salary_base) FROM Staff))
+--7
+UPDATE Staff
 SET Salary_base = Salary_base*1.15
 WHERE ID IN (SELECT ID FROM Staff WHERE DATEDIFF(year, Employed, GETDATE())>10)
 
 --8
 DELETE FROM Staff
-WHERE ID IN (SELECT ID FROM Staff WHERE Branch = 10)--9DELETE FROM Staff
+WHERE ID IN (SELECT ID FROM Staff WHERE Branch = 10)
+
+--9
+DELETE FROM Staff
 WHERE ID IN (SELECT ID FROM Staff WHERE Boss = 100 AND (Name = 'BRZEZINSKI' OR Name = 'MALINOWSKI'))
