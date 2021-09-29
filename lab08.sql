@@ -31,6 +31,7 @@ WHERE Branch = 20
 UPDATE Staff
 SET Salary_base =(SELECT Average=AVG(Salary_base) FROM Staff)
 WHERE ID IN (SELECT ID FROM Staff WHERE Salary_base = (SELECT MIN(Salary_base) FROM Staff))
+
 --7
 UPDATE Staff
 SET Salary_base = Salary_base*1.15
