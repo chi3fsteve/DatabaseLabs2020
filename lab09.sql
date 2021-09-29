@@ -29,6 +29,7 @@ FROM Staff a
 INNER JOIN (SELECT Branch, Average FROM SALARIES) b ON a.Branch=b.Branch
 WHERE a.Salary_base<b.Average
 GO
+
 --4
 IF OBJECT_ID('SALARIES_BASE','V') IS NOT NULL DROP VIEW SALARIES_BASE
 GO
